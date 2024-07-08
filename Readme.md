@@ -1,5 +1,34 @@
 # Trabalhando com Objetos
 
+## Referência: Curso de Desenvolvimento Java, Giuliana Silva Bezerra
+[Compre aqui](https://www.udemy.com/course/curso-de-desenvolvimento-java/)
+
+
+## Tópicos
+
+- [Orientação à Objeto](#orientação-à-objeto-oo)
+- [Vantagens da OO](#vantagens-da-oo)
+- [Classes](#classes)
+- [Relação entre Classe e Objeto](#qual-a-relação-entre-classes-e-objetos)
+- [Atributos](#atributos)
+- [Métodos](#métodos)
+- [Construtor Padrão](#construtores-padrão)
+- [Construtor com Parâmetros](#construtores-com-parâmetros)
+- [Valor Padrão dos Atributos](#valores-padrão-de-atributos)
+- [Pacotes](#pacotes)
+- [Membros Publicos (Public)](#membros-públicos)
+- [Tipos de Atributo (Primitivo vs Referência)](#tipos-de-referência)
+- [Wrapper Classes](#wrapper-classes-)
+- [Modificadores Static](#modificador-static-método-static-e-atributo-static)
+  - [Atributo](#atributo-static)
+  - [Método](#método-static)
+  - [Bloco](#bloco-static)
+- [Arrays São Objetos](#arrays-são-objetos)
+- [Arrays de Primitivos](#arrays-de-primitivos)
+- [Arrays de Objetos](#arrays-de-objetos)
+- [Igualdade entre Objetos](#igualdade-entre-objetos)
+- [Igualdade entre Arrays](#igualdade-entre-arrays)
+
 ## Orientação à Objeto (OO)
 
 Ao invés de colocarmos a lógica de tudo dentro do Main ou em uma função como na **estrutura procedural**: 
@@ -202,3 +231,131 @@ espaço na JVM.
 Então iremos para o passo 3:
 
 ![img_24.png](img_24.png)
+<hr>
+
+## Wrapper Classes 
+
+![img_25.png](img_25.png)
+
+Ao invés de declararmos: ```private int idade``` usaremos o tipo wrapper: ```private Integer idade```
+
+A partir do momento que utilizamos wrapper classes poderemos usar métodos desses tipos.
+
+![img_26.png](img_26.png)
+
+A partir de agora, não teremos mais um valor default. Precisaremos sempre inicializar esse objeto ao declará-lo.
+<hr>
+
+## Modificador Static, Método Static e Atributo Static
+
+![img_27.png](img_27.png)
+
+**Ao usarmos static, criamos membros que pertencem à classe e não dependem de objetos.**
+
+### Método Static
+Por exemplo, imagine que a gente tenha uma classe Matemática e dentro dela teremos um método de soma:
+
+![img_28.png](img_28.png)
+
+Inicialmente, teriamos que instanciar o objeto Matematica para utilizar esse método.
+
+![img_29.png](img_29.png)
+
+Mas, ao declararmos ```public static Double soma```, podemos chamar sem instanciar/criar o Objeto Matematica:
+
+![img_30.png](img_30.png)
+
+## Atributo Static
+
+Ok, em cima foi um método, mas e com atributos?
+
+Bom, vamos supor que a nossa calcula tem um limite de resultado na soma.
+
+![img_31.png](img_31.png)
+
+Para averigurar isso, passamos dentro do método uma condicional.
+
+![img_32.png](img_32.png)
+
+Conforme visto acima, isso dá um erro, por que?
+
+Bom, como aprendemos acima, vimos que métodos estaticos não dependem de instancias. Então se não existe nenhuma
+instancia da classe Matematica criada, não será possivel acessar também, seus atributos. Esse atributo "limite",
+será estatico. E existirá independente da classe Matematica ter sido instanciada ou não. E será possível 
+utilizá-lo.
+
+Portanto, métodos estáticos só acessam métodos/atributos estáticos.
+
+Por sua vez, metodos não estáticos, podem acessar estáticos.
+<hr>
+
+## Quando usar Static e Final?
+
+O valor limite declarado acima, por mais que seja estático, pode acabar sendo utilizado num método não estático
+tendo seu valor inicial alterado. Para que não seja possível reatribuir seu valor, passamos "final", no mesmo.
+Além diso, é comum variáveis do tipo final ter SNAKE_CASE. 
+
+Essa variável ficaria, portanto: ```public static final Double LIMITE_OPERACAO = 100.0```
+
+**O Static também pode ser utilizado em classes utilitárias. Classes utilitárias são úteis porém o ideal é sempre
+depender da instanciação do objeto.**
+
+## Bloco Static
+
+Sabe essa variável static limite? Imagine que a gente quer calcular ela antes de inicializar. Bom, criariamos
+um bloco Static e fariámos toda a logica de conta. Esse bloco pode ser acessado dentro da classe Main.
+
+![img_33.png](img_33.png)
+
+**Não é recomendável utilizar, pois é complicado depurar um erro inicializando um atributo dessa maneira.**
+<hr>
+
+## Arrays São Objetos
+
+Os arrays possuem dentro deles, tipos primitivos. Mas o Array como um todo é um tipo de referência, pois é
+definido por uma classe.
+
+Cada posição dentro do Array, é um objeto.
+
+## Arrays de Primitivos
+
+Existe uma forma mais simples de percorrer e imprimir um Array.
+
+Usaremos uma classe utilitária que possui vários métodos estaticos: Arrays.
+
+![img_34.png](img_34.png)
+
+## Arrays de Objetos
+
+Criamos um Objeto (classe), Gato. E dentro do Main criaremos um Array desse tipo.
+
+![img_35.png](img_35.png)
+
+Aqui o .toString do Arrays não funcionará. Pois ele é um array de objetos.
+
+Criaremos um toString dentro da Classe Gato e assim o .toString irá funcionar :).
+<hr>
+
+## Igualdade entre Objetos
+
+Todos os objetos são "objects" e possuem acesso ao .equals, e sempre que compararmos, dará false. Pois possuirão
+objetos de memória diferentes.
+
+![img_36.png](img_36.png)
+
+Teremos que "criar" nosso próprio equals, contendo um hashCode. 
+
+hashCode é um código específico gerado pela linguagem para cada objeto. Se os objetos são iguais... em tese
+o hashCode será igual também.
+
+Então dentro da Classe criaremos um método equals and HashCode, e poderemos escolher qual o critério a ser usado.
+Se quer comparar Id com Id, Username com Username e por aí vai. 
+
+## Igualdade entre Arrays
+
+Para comparar Arrays, precisamos comparar elemento a elemento. utilizaremos Arrays.equals(array1, array2),
+por exemplo.
+
+![img_37.png](img_37.png)
+
+Destacando que no objeto principal (Usuario), por exemplo, TEM QUE TER A IMPLEMENTAÇÃO DO EQUALS E HASHCODE.
