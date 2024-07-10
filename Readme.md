@@ -2,7 +2,7 @@
 
 ## Referência: Curso de Desenvolvimento Java, Giuliana Silva Bezerra
 [Compre aqui](https://www.udemy.com/course/curso-de-desenvolvimento-java/)
-
+<hr>
 
 ## Tópicos
 
@@ -28,6 +28,7 @@
 - [Arrays de Objetos](#arrays-de-objetos)
 - [Igualdade entre Objetos](#igualdade-entre-objetos)
 - [Igualdade entre Arrays](#igualdade-entre-arrays)
+<hr>
 
 ## Orientação à Objeto (OO)
 
